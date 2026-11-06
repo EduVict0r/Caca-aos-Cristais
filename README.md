@@ -15,13 +15,21 @@ A janela tem conteúdo fixo de 800 × 640. O placar fica acima da arena.
 
 ## Regras e controles
 
-Enter inicia. Setas ou WASD movimentam, inclusive diagonal com velocidade normalizada.
-P pausa/retoma. Perder o foco pausa e limpa as teclas; volte e pressione P.
-Colete dez cristais, cada um valendo dez pontos, apenas uma vez.
-Dois inimigos patrulham e invertem o sentido nos limites.
-Você tem três vidas e aproximadamente um segundo de proteção após dano, indicado por piscadas e um círculo branco.
-Zero vidas causa derrota, inclusive se o último cristal for coletado na mesma atualização.
-R reinicia nas telas finais, restaurando toda a partida.
+| Comando | Ação |
+| --- | --- |
+| Enter | Iniciar a partida |
+| Setas ou WASD | Movimentar o personagem |
+| P | Pausar ou retomar |
+| R | Reiniciar após vitória ou derrota |
+
+- Colete os dez cristais. Cada cristal vale dez pontos e só pode ser coletado uma vez.
+- Evite os dois inimigos que patrulham a arena.
+- Você começa com três vidas.
+- Após receber dano, fica protegido por aproximadamente um segundo, com indicação visual.
+- Coletar todos os cristais com vidas restantes resulta em vitória.
+- Perder todas as vidas resulta em derrota, mesmo ao coletar o último cristal na mesma atualização.
+- Trocar de janela pausa a partida e limpa os comandos de movimento.
+- Reiniciar restaura os dados da partida.
 
 ## Arquivos
 
@@ -50,7 +58,9 @@ Compilação de todas as fontes com JDK 26 concluída. GameChecks executou com s
 diagonal, limites superior/inferior, dano repetido, proteção aos 980/1000 ms, estado de coleta,
 limites e inversão das duas patrulhas, abertura da janela e renderização do painel.
 Também acionou Enter via ActionMap e a rotina de perda de foco, sem verificar automaticamente seus estados internos.
-Não houve partida completa controlada por teclado nem inspeção visual humana; os casos abaixo continuam manuais.
+Após as verificações automatizadas, Edu validou manualmente vitória,
+derrota, pontuação e reinício, confirmando o comportamento esperado.
+Os cenários adicionais do roteiro abaixo permanecem para conferência.
 
 No PowerShell, a partir desta pasta:
 ```powershell
@@ -60,7 +70,7 @@ java --class-path=out/verificacao GameChecks
 java --class-path=out/verificacao com.unibra.game.Game
 ```
 
-## Roteiro manual pendente
+## Roteiro de testes manuais
 
 - Conferir tela inicial e Enter, placar inicial 0 / 3 / 0.
 - Mover com ambos os grupos de teclas; combinar e soltar W e seta para cima separadamente.
